@@ -23,6 +23,7 @@ const unsigned long BOT_MTBS = 100; // mean time between scan messages
 
 void setup() {
   Serial.begin(115200);
+  pinMode(23, OUTPUT);
 
     // Initialize with the I2C addr 0x3C (for the 128x64)
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
@@ -72,6 +73,23 @@ void loop() {
 
             display.println(text);
             display.display();
+
+            if (text == "saadd_emergency"){
+              bot.sendMessage(chat_id,"Emergency Msg Sent and Received");
+              digitalWrite(23,HIGH);
+              delay(1000);
+              digitalWrite(23,LOW);
+              delay(1000);
+              digitalWrite(23,HIGH);
+              delay(1000);
+              digitalWrite(23,LOW);
+              delay(1000);
+              digitalWrite(23,HIGH);
+              delay(1000);
+              digitalWrite(23,LOW);
+              delay(1000);
+
+            }
 
         } else {
 
